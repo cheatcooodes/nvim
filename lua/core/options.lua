@@ -1,106 +1,45 @@
-local opt = vim.opt
-local g = vim.g
--- local config = require("core.default_config")
-local ui = require("theme.ui")
-
-g.vim_version = vim.version().minor
--- g.nvchad_theme = config.ui.theme
-g.nvchad_theme = ui.theme
-g.toggle_theme_icon = "   "
--- g.transparency = config.ui.transparency
-g.transparency = ui.transparency
-g.theme_switcher_loaded = false
-
--- use filetype.lua instead of filetype.vim. it's enabled by default in neovim 0.8 (nightly)
-if g.vim_version < 8 then
-  g.did_load_filetypes = 0
-  g.do_filetype_lua = 1
-end
-
-opt.laststatus = 3 -- global statusline
-opt.showmode = false
-
-opt.title = true
-opt.clipboard = "unnamedplus"
-opt.cursorline = true
-
--- Indenting
-opt.expandtab = true
-opt.shiftwidth = 2
-opt.smartindent = true
-opt.tabstop = 2
-opt.softtabstop = 2
-
-opt.fillchars = { eob = " " }
-opt.ignorecase = true
-opt.smartcase = true
-opt.mouse = "a"
-
--- Numbers
-opt.number = true
-opt.numberwidth = 2
-opt.ruler = false
-
--- disable nvim intro
-opt.shortmess:append "sI"
-
-opt.signcolumn = "yes"
-opt.splitbelow = true
-opt.splitright = true
-opt.termguicolors = true
-opt.timeoutlen = 400
-opt.undofile = true
-
--- interval for writing swap file to disk, also used by gitsigns
-opt.updatetime = 250
-
--- go to previous/next line with h,l,left arrow and right arrow
--- when cursor reaches end/beginning of line
-opt.whichwrap:append "<>[]hl"
-
-g.mapleader = " "
-
--- disable some builtin vim plugins
-local default_plugins = {
-  "2html_plugin",
-  "getscript",
-  "getscriptPlugin",
-  "gzip",
-  "logipat",
-  "netrw",
-  "netrwPlugin",
-  "netrwSettings",
-  "netrwFileHandlers",
-  "matchit",
-  "tar",
-  "tarPlugin",
-  "rrhelper",
-  "spellfile_plugin",
-  "vimball",
-  "vimballPlugin",
-  "zip",
-  "zipPlugin",
-  "tutor",
-  "rplugin",
-  "syntax",
-  "synmenu",
-  "optwin",
-  "compiler",
-  "bugreport",
-  "ftplugin",
-}
-
-for _, plugin in pairs(default_plugins) do
-  g["loaded_" .. plugin] = 1
-end
-
-local default_providers = {
-  "node",
-  "perl",
-  "python3",
-  "ruby",
-}
-
-for _, provider in ipairs(default_providers) do
-  vim.g["loaded_" .. provider .. "_provider"] = 0
-end
+vim.opt.encoding = "UTF-8"
+vim.opt.fileencoding = "utf-8"
+vim.opt.scrolloff = 8 -- 移动保持光标周围8行
+vim.opt.sidescrolloff = 8
+vim.opt.number = true -- 行号
+vim.opt.relativenumber = true -- 相对行号
+vim.opt.cursorline = true -- 高亮所在行
+vim.opt.signcolumn = "yes" -- 显示左侧图标指示列
+vim.opt.tabstop = 2
+vim.opt.tabstop = 2
+vim.opt.softtabstop = 2
+vim.opt.shiftround = true
+vim.opt.shiftwidth = 2
+vim.opt.shiftwidth = 2
+vim.opt.autoindent = true
+vim.opt.autoindent = true
+vim.opt.smartindent = true
+vim.opt.ignorecase = true
+vim.opt.smartcase = true
+vim.opt.incsearch = true
+vim.opt.cmdheight = 1
+vim.opt.autoread = true
+vim.opt.autoread = true
+vim.opt.hidden = true
+vim.opt.mouse = "a"
+vim.opt.backup = false
+vim.opt.writebackup = false
+vim.opt.swapfile = false
+vim.opt.updatetime = 300
+vim.opt.timeoutlen = 500 -- 等待键盘快捷键连击时间
+vim.opt.splitbelow = true
+vim.opt.splitright = true
+-- vim.g.completeopt = "menu,menuone,noselect,noinsert"
+vim.opt.completeopt = "menu,menuone,noselect,noinsert" -- 自动补全不自动选中
+vim.opt.termguicolors = true
+vim.opt.termguicolors = true
+vim.opt.list = false
+vim.opt.listchars = "space:·,tab:··"
+vim.opt.wildmenu = true
+vim.opt.shortmess = vim.o.shortmess .. "c"
+vim.opt.pumheight = 10
+vim.opt.showtabline = 2
+vim.opt.showmode = false -- vim 自带的模式提示
+vim.opt.clipboard = "unnamedplus"
+vim.opt.undofile = true -- 无限撤消
