@@ -1,38 +1,35 @@
 -- 保存本地变量
 local map = vim.keymap.set
--- local map = vim.api.nvim_set_keymap -- deprecated
-local opt = { noremap = true, silent = true }
+local utils_exist = pcall(require,"core.utils")
 
+-- Deprecated
+-- local map = vim.api.nvim_set_keymap
+-- local opt = { noremap = true, silent = true }
 
 -- Leader key
 vim.g.mapleader = " " -- 不能用<space>
 
 -- 取消高亮
-map("n", "<ESC>", ":noh<CR>", opt)
+map("n", "<ESC>", ":noh<CR>")
 -- 屏幕行之间跳转
-map("n", "j", "gj", opt)
-map("n", "k", "gk", opt)
+map("n", "j", "gj")
+map("n", "k", "gk")
 -- 移动到行首/行尾 (屏幕行)
-map("n", "H", "g^", opt)
-map("n", "L", "g$", opt)
-map("v", "H", "g^", opt)
-map("v", "L", "g$", opt)
--- 拖拽选中行（来自LunarVim配置）
--- 对vscode支持较差
--- map("v","J",":move '>+1<CR>gv-gv",opt)
--- map("v","K",":move '<lt>-2<CR>gv-gv",opt)
+map("n", "H", "g^")
+map("n", "L", "g$")
+map("v", "H", "g^")
+map("v", "L", "g$")
 -- 光标处输入回车符（覆盖原本的帮助功能）
-map("n", "K", "a<CR><ESC>^", opt)
+map("n", "K", "a<CR><ESC>^")
 -- Stay in indent mode
-map("v", "<", "<gv", opt)
-map("v", ">", ">gv", opt)
+map("v", "<", "<gv")
+map("v", ">", ">gv")
 -- Quit terminal mode
-map("t", "<ESC><ESC>", "<C-\\><C-n>", opt)
-map("t", "<C-w>h", "<C-\\><C-n><C-w>h", opt)
-map("t", "<C-w>j", "<C-\\><C-n><C-w>j", opt)
-map("t", "<C-w>k", "<C-\\><C-n><C-w>k", opt)
-map("t", "<C-w>l", "<C-\\><C-n><C-w>l", opt)
-
+map("t", "<ESC><ESC>", "<C-\\><C-n>")
+map("t", "<C-w>h", "<C-\\><C-n><C-w>h")
+map("t", "<C-w>j", "<C-\\><C-n><C-w>j")
+map("t", "<C-w>k", "<C-\\><C-n><C-w>k")
+map("t", "<C-w>l", "<C-\\><C-n><C-w>l")
 -- Toggle relative line number
 map("","<leader>r", 
 	function()
@@ -43,9 +40,14 @@ map("","<leader>r",
 			vim.opt.relativenumber = true
 		end
 	end,{desc="Toggle relative line number"})
-
-
-local utils_exist = pcall(require,"core.utils")
+-- Open a terminal
+map("","<Nop>",
+	function() 
+		vim.cmd([[vsplit|terminal]])
+		vim.cmd([[startinsert]])
+		vim.opt.number = false
+		vim.opt.relativenumber = false
+	end)
 
 if utils_exist then
 	map("n","<F5>",
