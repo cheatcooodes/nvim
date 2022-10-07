@@ -13,7 +13,7 @@ local ensure_packer = function()
         vim.o.runtimepath = rtp_addition .. "," .. vim.o.runtimepath
     end
 
-    vim.notify("Pakcer.nvim 安装完毕")
+    vim.notify("Packer.nvim 安装完毕")
     return true
   end
   return false
@@ -40,6 +40,7 @@ packer.startup(
 			use {"windwp/nvim-autopairs",
 					config = function() require("nvim-autopairs").setup {} end
 			}
+			
 			-- Colorscheme
 			use 'joshdick/onedark.vim'
 			use 'cormacrelf/vim-colors-github'

@@ -6,14 +6,14 @@ local autocmd = vim.api.nvim_create_autocmd
 -- Auto save
 autocmd({"InsertLeave", "TextChanged"}, {
 		group = myAutoGroup,
-		command = 'silent wall', -- write all without notify
+		command = "silent wall", -- write all without notify
 	})
 
 -- Source the bashrc/zshrc when leaving the current buffer
 autocmd("BufWinLeave", { -- "BufWritePost"
 	group = myAutoGroup,
 	pattern = {".bashrc",".zshrc"},
-	command = "!source %"
+	command = "!source %",
 })
 
 -- Update the config without restarting
@@ -23,7 +23,7 @@ autocmd({"InsertLeave", "TextChanged"}, {
 	callback = function()
 		local status_ok = pcall(vim.cmd,"source %")
 		if status_ok then
-			vim.notify("Configuration Updated")
+			vim.notify("Configuration updated")
 		else
 			vim.notify("")
 		end
