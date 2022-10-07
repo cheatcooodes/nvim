@@ -1,6 +1,8 @@
 -- 保存本地变量
-local map = vim.api.nvim_set_keymap
+local map = vim.keymap.set
+-- local map = vim.api.nvim_set_keymap -- deprecated
 local opt = { noremap = true, silent = true }
+
 
 -- Leader key
 vim.g.mapleader = " " -- 不能用<space>
@@ -31,8 +33,8 @@ map("t", "<C-w>j", "<C-\\><C-n><C-w>j", opt)
 map("t", "<C-w>k", "<C-\\><C-n><C-w>k", opt)
 map("t", "<C-w>l", "<C-\\><C-n><C-w>l", opt)
 
--- 切换相对行号
-vim.keymap.set("","<leader>r", 
+-- Toggle relative line number
+map("","<leader>r", 
 	function()
 		local status = vim.opt.relativenumber:get()
 		if status == true then
@@ -40,15 +42,18 @@ vim.keymap.set("","<leader>r",
 		else
 			vim.opt.relativenumber = true
 		end
-	end,
-opt)
+	end,{desc="Toggle relative line number"})
 
-vim.keymap.set("n","<F5>",
-	function()
-		local code_runner = code_runner()
-		pcall(code_runner)
-	end,
-opt)
+
+local utils_exist = pcall(require,"core.utils")
+
+if utils_exist then
+	map("n","<F5>",
+		function()
+			require("core.utils").code_runner()
+		end)
+end
+
 
 -- 屏蔽不常用的按键
 -- R,r,T,t

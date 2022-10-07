@@ -5,7 +5,7 @@ if !exists('g:vscode')
 	lua require("core.plugins")
 	lua require("core.colorscheme")
 	lua require("core.autocmds")
-	lua require("core.usercmds")
+	lua require("core.utils")
 	" --- PLUGINS ---
 
 else
