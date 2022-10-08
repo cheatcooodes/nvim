@@ -1,11 +1,12 @@
--- 保存本地变量
 local map = vim.keymap.set
-local utils_exist = pcall(require,"core.utils")
+local utils_exist,utils = pcall(require,"core.utils")
 
 -- Deprecated
 -- local map = vim.api.nvim_set_keymap
 -- local opt = { noremap = true, silent = true }
 
+
+-- [CORE]
 -- Leader key
 vim.g.mapleader = " " -- 不能用<space>
 
@@ -49,12 +50,26 @@ map("","<Nop>",
 		vim.opt.relativenumber = false
 	end)
 
+
+-- [UTILS]
 if utils_exist then
+
+-- CodeRunner
 	map("n","<F5>",
 		function()
-			require("core.utils").code_runner()
+			utils.code_runner()
 		end)
+
 end
+
+
+-- [PLUGINS]
+-- hop.nvim
+if pcall(require,"hop") then
+	map('','<leader><leader>',"<cmd>HopWord<CR>")
+	-- map('','/',"<cmd>HopPattern<CR>")
+end
+
 
 
 -- 屏蔽不常用的按键

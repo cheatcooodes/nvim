@@ -40,6 +40,14 @@ packer.startup(
 			use {"windwp/nvim-autopairs",
 					config = function() require("nvim-autopairs").setup {} end
 			}
+			use {
+				'phaazon/hop.nvim',
+				branch = 'v2', -- optional but strongly recommended
+				config = function()
+					-- you can configure Hop the way you like here; see :h hop-config
+					require'hop'.setup { keys = 'etovxqpdygfblzhckisuran' }
+				end
+			}
 			
 			-- Colorscheme
 			use 'joshdick/onedark.vim'
@@ -57,7 +65,7 @@ packer.startup(
 
 			-- Custom source
 			git = {
-				default_url_format ="https://mirror.ghproxy.com/https://github.com/%s" -- 镜像源
+				-- default_url_format = ""
 			},
 			-- Floating window
 			display = {
