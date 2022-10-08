@@ -9,12 +9,6 @@ autocmd({"InsertLeave", "TextChanged"}, {
 		command = "silent wall", -- write all without notify
 	})
 
--- Source the bashrc/zshrc when leaving the current buffer
-autocmd("BufWinLeave", { -- "BufWritePost"
-	group = myAutoGroup,
-	pattern = {".bashrc",".zshrc"},
-	command = "!source %",
-})
 
 -- Update the config without restarting
 autocmd({"InsertLeave", "TextChanged"}, {
@@ -45,23 +39,6 @@ autocmd("TermOpen", {
 		vim.wo.relativenumber = false
 	end
 })
-
--- Clipboard Config for WSL
--- Not having the if judgment here can cause problems.
--- vim.fn.system doesn't work here.
-if vim.fn.has("wsl") then
-	autocmd("TextYankPost *", {
-		group = myAutoGroup,
-		callback = function()
-			vim.cmd([[
-			if v:event.regname ==# '+'
-				call system('/mnt/c/windows/system32/clip.exe ',@")
-			endif ]]) 
-			-- vim.notify("The content has been yanked to clip.exe")
-		end
-	})
-end
-
 
 
 
