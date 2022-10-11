@@ -1,5 +1,5 @@
 local map = vim.keymap.set
-local utils_exist = pcall(require,"core.utils")
+local utils_exist = pcall(require, "core.utils")
 
 -- Deprecated
 -- local map = vim.api.nvim_set_keymap
@@ -30,46 +30,42 @@ map("t", "<C-w>j", "<C-\\><C-n><C-w>j")
 map("t", "<C-w>k", "<C-\\><C-n><C-w>k")
 map("t", "<C-w>l", "<C-\\><C-n><C-w>l")
 -- Toggle relative line number
-map("","<leader>r", 
-	function()
-		local status = vim.opt.relativenumber:get()
-		if status == true then
-			vim.opt.relativenumber = false
-		else
-			vim.opt.relativenumber = true
-		end
-	end,{desc="Toggle relative line number"})
+map("", "<leader>r",
+  function()
+    local status = vim.opt.relativenumber:get()
+    if status == true then
+      vim.opt.relativenumber = false
+    else
+      vim.opt.relativenumber = true
+    end
+  end, { desc = "Toggle relative line number" })
 -- Open a terminal
-map("","<Nop>",
-	function() 
-		vim.cmd([[vsplit|terminal]])
-		vim.cmd([[startinsert]])
-		vim.opt.number = false
-		vim.opt.relativenumber = false
-	end)
+map("", "<Nop>",
+  function()
+    vim.cmd([[vsplit|terminal]])
+    vim.cmd([[startinsert]])
+    vim.opt.number = false
+    vim.opt.relativenumber = false
+  end)
 
 
 -- [UTILS]
 if utils_exist then
 
--- CodeRunner
-	map("n","<F5>",
-		function()
-			code_runner()
-		end)
+  -- CodeRunner
+  map("n", "<F5>",
+    function()
+      code_runner()
+    end)
 
 end
 
 -- [PLUGINS]
 -- hop.nvim
-if pcall(require,"hop") then
-	-- map('','<leader><leader>',"<cmd>HopWord<CR>")
-	map('','<leader><leader>',"<cmd>HopWord<CR>")
-	map('','f',"<cmd>HopChar1<CR>")
-	map('','F',"<Nop>")
-	map('','t',"<Nop>")
-	map('','T',"<Nop>")
-	-- map('','/',"<cmd>HopPattern<CR>")
+if pcall(require, "hop") then
+  -- map('','<leader><leader>',"<cmd>HopWord<CR>")
+  map('', '<leader><leader>', "<cmd>HopWord<CR>")
+  -- map('','/',"<cmd>HopPattern<CR>")
 end
 
 
