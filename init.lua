@@ -6,32 +6,30 @@
 ██║╚██╗██║██╔══╝  ██║   ██║╚██╗ ██╔╝██║██║╚██╔╝██║
 ██║ ╚████║███████╗╚██████╔╝ ╚████╔╝ ██║██║ ╚═╝ ██║
 ╚═╝  ╚═══╝╚══════╝ ╚═════╝   ╚═══╝  ╚═╝╚═╝     ╚═╝
-                                                  
-────────── cheatcooodes's Neovim config ──────────
 
+──── cheatcooodes's Neovim config  6/Oct/2022 ────
 
 --]]
 
-local normal_config = {
+local config = {
 	-- [CORE]
 	"core.options",
+	"core.utils",
 	"core.mappings",
-	"core.packer",
 	"core.colorscheme",
 	"core.autocmds",
 
 	-- [PLUGINS]
-	-- "plugins.stuff",
+	"plugins",
+	-- "plugins.configs.plugstuff"
 }
 
-local vscode_config = {
-	"core.options",
-	"core.mappings",
-}
-
-local config = normal_config
 if vim.g.vscode then
-	config = vscode_config
+	-- vscode-neovim stuff
+end
+
+if vim.fn.has("wsl") then 
+	-- Do nothing
 end
 
 for i,luafile in pairs(config) do
@@ -41,8 +39,3 @@ for i,luafile in pairs(config) do
 	end
 end
 
--- if vim.fn.has("wsl") then end
-
-
--- 6/Oct/2022
--- https://github.com/xxCheatCodes/nvim
