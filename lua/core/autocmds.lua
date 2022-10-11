@@ -6,7 +6,7 @@ local autocmd = vim.api.nvim_create_autocmd
 -- Auto save
 autocmd({"InsertLeave", "TextChanged"}, {
 		group = myAutoGroup,
-		command = "silent wall", -- write all without notify
+		command = "silent! wall", -- write all without notify
 	})
 
 
@@ -17,12 +17,18 @@ autocmd({"InsertLeave", "TextChanged"}, {
 	callback = function()
 		local status_ok = pcall(vim.cmd,"source %")
 		if status_ok then
-			vim.notify("Configuration updated")
+			current_file = vim.fn.expand("%:t")
+			if string.match(vim.fn.expand("%:p"),".*/.config/nvim/lua/plugins/.*%plua") then 
+				-- I hate the pattern matching in lua
+				pcall(vim.cmd,"PackerCompile")
+			end
+			vim.notify("["..current_file.."]: ".."Configuration updated.")
 		else
 			vim.notify("")
 		end
 	end
 })
+
 
 -- Terminal Mode
 -- Automatically enter insert mode
