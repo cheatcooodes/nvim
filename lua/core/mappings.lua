@@ -1,5 +1,5 @@
 local map = vim.keymap.set
-local utils_exist,utils = pcall(require,"core.utils")
+local utils_exist = pcall(require,"core.utils")
 
 -- Deprecated
 -- local map = vim.api.nvim_set_keymap
@@ -20,8 +20,6 @@ map("n", "H", "g^")
 map("n", "L", "g$")
 map("v", "H", "g^")
 map("v", "L", "g$")
--- 光标处输入回车符（覆盖原本的帮助功能）
-map("n", "K", "a<CR><ESC>^")
 -- Stay in indent mode
 map("v", "<", "<gv")
 map("v", ">", ">gv")
@@ -57,16 +55,20 @@ if utils_exist then
 -- CodeRunner
 	map("n","<F5>",
 		function()
-			utils.code_runner()
+			code_runner()
 		end)
 
 end
 
-
 -- [PLUGINS]
 -- hop.nvim
 if pcall(require,"hop") then
+	-- map('','<leader><leader>',"<cmd>HopWord<CR>")
 	map('','<leader><leader>',"<cmd>HopWord<CR>")
+	map('','f',"<cmd>HopChar1<CR>")
+	map('','F',"<Nop>")
+	map('','t',"<Nop>")
+	map('','T',"<Nop>")
 	-- map('','/',"<cmd>HopPattern<CR>")
 end
 
@@ -78,21 +80,12 @@ end
 -- 切换标签
 -- <C-Tab>
 
--- focus on explorer
--- <C-e>
 
-
--- vim-surround
--- <leader>s
-
--- easy-motion
--- <leader>f
-
--- telescope
+-- Telescope
 -- <leader>F
 
--- toggle explorer
--- <leader>e
+-- Toggle explorer
+-- <C-e>
 
 -- Markdown mode
 -- 只在.md文件中生效
