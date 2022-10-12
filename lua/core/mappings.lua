@@ -1,6 +1,6 @@
 local map = vim.keymap.set
+local opts = { noremap=true, silent=true }
 local utils_exist = pcall(require, "core.utils")
-
 
 -- [CORE]
 -- Leader key

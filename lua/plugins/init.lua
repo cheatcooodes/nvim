@@ -1,22 +1,3 @@
-local plugins = function(use)
-	-- Packer
-	use {'wbthomason/packer.nvim'}
-
-	-- Plugins
-	use {'vim-airline/vim-airline'}
-	use {"windwp/nvim-autopairs"}
-	use {'phaazon/hop.nvim', branch = 'v2'}
-	use {'tpope/vim-surround'}
-	
-	-- Colorscheme
-	use {'joshdick/onedark.vim'}
-	use {'cormacrelf/vim-colors-github'}
-
-	if packer_bootstrap then
-		require('packer').sync()
-	end
-end
-
 -- BootStrap
 local ensure_packer = function()
   local fn = vim.fn
@@ -50,7 +31,43 @@ end
 -- Startup
 packer.startup(
 	{
-		plugins,
+		function(use)
+			-- Packer
+			use {'wbthomason/packer.nvim'}
+			-- Utils
+			use {'vim-airline/vim-airline'}
+			use {'windwp/nvim-autopairs'}
+			use {'phaazon/hop.nvim', branch = 'v2'}
+			use {'tpope/vim-surround'}
+			-- use {'folke/which-key.nvim'}
+			-- Lsp installer
+			use {'williamboman/mason.nvim'}
+			use {'williamboman/mason-lspconfig.nvim'}
+			-- Lspconfig
+			use {'neovim/nvim-lspconfig'}
+			-- AutoCompletion
+			use {'hrsh7th/nvim-cmp'}
+			use {'hrsh7th/cmp-nvim-lsp'}
+			use {'hrsh7th/cmp-buffer'}
+			use {'hrsh7th/cmp-path'}
+			use {'hrsh7th/cmp-cmdline'}
+			-- Snippets
+			use {'L3MON4D3/LuaSnip'}
+			use {'saadparwaiz1/cmp_luasnip'}
+			use {'onsails/lspkind.nvim'}
+			-- Colorscheme
+			use {'joshdick/onedark.vim'}
+			use {'cormacrelf/vim-colors-github'}
+			-- install without yarn or npm
+			use({
+					"iamcco/markdown-preview.nvim",
+					run = function() vim.fn["mkdp#util#install"]() end,
+			})
+
+			if packer_bootstrap then
+				require('packer').sync()
+			end
+		end,
 		config = {
 			-- Maximum concurrency
 			max_jobs = 16,
@@ -60,8 +77,8 @@ packer.startup(
 			},
 			-- Floating window
 			display = {
-				open_fn = function() 
-					return require("packer.util").float({ border = "single" }) 
+				open_fn = function()
+					return require("packer.util").float({ border = "single" })
 				end
 			}
 		}

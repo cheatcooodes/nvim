@@ -17,12 +17,12 @@ autocmd({"InsertLeave", "TextChanged"}, {
 	callback = function()
 		local status_ok = pcall(vim.cmd,"source %")
 		if status_ok then
-			current_file = vim.fn.expand("%:t")
-			if string.match(vim.fn.expand("%:p"),".*/.config/nvim/lua/plugins/.*%plua") then 
+			local current_file = vim.fn.expand("%:t")
+			if string.match(vim.fn.expand("%:p"),".*/.config/nvim/lua/plugins/.*%plua") then
 				-- I hate the pattern matching in lua
 				pcall(vim.cmd,"PackerCompile")
 			end
-			vim.notify("["..current_file.."]: ".."Configuration updated.")
+			vim.notify("["..current_file.."] ".."Configuration updated.")
 		else
 			vim.notify("")
 		end

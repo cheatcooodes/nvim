@@ -22,9 +22,25 @@ local config = {
 	-- [PLUGINS]
 	"plugins",
 	"plugins.configs.autopairs",
-	"plugins.configs.hop"
+	"plugins.configs.hop",
+	"plugins.configs.mason",
+	"plugins.configs.lspconfig",
+	"plugins.configs.lspkind",
+	"plugins.configs.cmp",
+
+	-- [LSPCONFIGS]
+	"lsp.pyright",
+	"lsp.sumneko_lua",
 }
 
+for _,luafile in pairs(config) do
+	local status_ok = pcall(require,luafile)
+	if not status_ok then
+		vim.notify("Failed to load "..luafile)
+	end
+end
+
+--[[
 if vim.g.vscode then
 	-- vscode-neovim stuff
 end
@@ -32,11 +48,4 @@ end
 if vim.fn.has("wsl") then 
 	-- Do nothing
 end
-
-for i,luafile in pairs(config) do
-	local status_ok = pcall(require,luafile)
-	if not status_ok then
-		vim.notify("Failed to load "..luafile)
-	end
-end
-
+--]]
