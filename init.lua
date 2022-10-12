@@ -21,7 +21,8 @@ local config = {
 
 	-- [PLUGINS]
 	"plugins",
-	-- "plugins.configs.plugstuff"
+	"plugins.configs.autopairs",
+	"plugins.configs.hop"
 }
 
 if vim.g.vscode then

@@ -3,16 +3,16 @@ local myAutoGroup = vim.api.nvim_create_augroup("myAutoGroup", {
 })
 local autocmd = vim.api.nvim_create_autocmd
 
--- Auto save
+-- Auto write
 autocmd({"InsertLeave", "TextChanged"}, {
-		group = myAutoGroup,
+		-- group = myAutoGroup,
 		command = "silent! wall", -- write all without notify
 	})
 
 
 -- Update the config without restarting
 autocmd({"InsertLeave", "TextChanged"}, {
-	group = myAutoGroup,
+	-- group = myAutoGroup,
 	pattern = {"*/.config/nvim/*.lua","*/.config/nvim/*.vim"},
 	callback = function()
 		local status_ok = pcall(vim.cmd,"source %")
@@ -33,16 +33,27 @@ autocmd({"InsertLeave", "TextChanged"}, {
 -- Terminal Mode
 -- Automatically enter insert mode
 autocmd("TermOpen", {
-	group = myAutoGroup,
+	-- group = myAutoGroup,
 	command = "startinsert",
 })
 
 -- Line number will not be displayed
 autocmd("TermOpen", {
-	group = myAutoGroup,
+	-- group = myAutoGroup,
 	callback = function()
 		vim.wo.number = false -- "wo" means options in current window
 		vim.wo.relativenumber = false
+	end
+})
+
+-- Highlight when yanking
+autocmd("TextYankPost", {
+	-- group = myAutoGroup,
+	callback = function()
+		vim.highlight.on_yank({
+			higroup = 'IncSearch',
+			timeout = 300
+		})
 	end
 })
 

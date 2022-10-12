@@ -1,3 +1,22 @@
+local plugins = function(use)
+	-- Packer
+	use {'wbthomason/packer.nvim'}
+
+	-- Plugins
+	use {'vim-airline/vim-airline'}
+	use {"windwp/nvim-autopairs"}
+	use {'phaazon/hop.nvim', branch = 'v2'}
+	use {'tpope/vim-surround'}
+	
+	-- Colorscheme
+	use {'joshdick/onedark.vim'}
+	use {'cormacrelf/vim-colors-github'}
+
+	if packer_bootstrap then
+		require('packer').sync()
+	end
+end
+
 -- BootStrap
 local ensure_packer = function()
   local fn = vim.fn
@@ -31,38 +50,10 @@ end
 -- Startup
 packer.startup(
 	{
-		function(use)
-			-- Packer
-			use 'wbthomason/packer.nvim'
-
-			-- Plugins
-			use 'vim-airline/vim-airline'
-			use {"windwp/nvim-autopairs",
-					config = function() require("nvim-autopairs").setup {} end
-			}
-			use {'phaazon/hop.nvim',
-				branch = 'v2', -- optional but strongly recommended
-				config = function()
-					-- you can configure Hop the way you like here; see :h hop-config
-					require'hop'.setup { keys = 'etovxqpdygfblzhckisuran;'}
-				end
-			}
-			use 'tpope/vim-surround'
-			
-			-- Colorscheme
-			use 'joshdick/onedark.vim'
-			use 'cormacrelf/vim-colors-github'
-
-			-- Automatically set up your configuration after cloning packer.nvim
-			if packer_bootstrap then
-				require('packer').sync()
-			end
-		end,
-
+		plugins,
 		config = {
 			-- Maximum concurrency
-			max_jobs = 16, -- 最大并发数
-
+			max_jobs = 16,
 			-- Custom source
 			git = {
 				-- default_url_format = ""

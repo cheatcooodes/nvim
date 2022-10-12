@@ -1,10 +1,6 @@
 local map = vim.keymap.set
 local utils_exist = pcall(require, "core.utils")
 
--- Deprecated
--- local map = vim.api.nvim_set_keymap
--- local opt = { noremap = true, silent = true }
-
 
 -- [CORE]
 -- Leader key
@@ -33,7 +29,7 @@ map("t", "<C-w>l", "<C-\\><C-n><C-w>l")
 map("", "<leader>r",
   function()
     local status = vim.opt.relativenumber:get()
-    if status == true then
+    if status then
       vim.opt.relativenumber = false
     else
       vim.opt.relativenumber = true
@@ -63,7 +59,6 @@ end
 -- [PLUGINS]
 -- hop.nvim
 if pcall(require, "hop") then
-  -- map('','<leader><leader>',"<cmd>HopWord<CR>")
   map('', '<leader><leader>', "<cmd>HopWord<CR>")
   -- map('','/',"<cmd>HopPattern<CR>")
 end
