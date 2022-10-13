@@ -21,6 +21,7 @@ local config = {
 
 	-- [PLUGINS]
 	"plugins",
+	"plugins.configs.lualine",
 	"plugins.configs.autopairs",
 	"plugins.configs.hop",
 	"plugins.configs.mason",

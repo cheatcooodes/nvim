@@ -29,9 +29,8 @@ autocmd({"InsertLeave", "TextChanged"}, {
 	end
 })
 
-
 -- Terminal Mode
--- Automatically enter insert mode
+-- Automatically switch to insert mode
 autocmd("TermOpen", {
 	-- group = myAutoGroup,
 	command = "startinsert",

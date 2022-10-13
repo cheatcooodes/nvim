@@ -34,8 +34,11 @@ packer.startup(
 		function(use)
 			-- Packer
 			use {'wbthomason/packer.nvim'}
+			-- Icons
+			use({'kyazdani42/nvim-web-devicons'})
+			-- Status line
+			use({'nvim-lualine/lualine.nvim'})
 			-- Utils
-			use {'vim-airline/vim-airline'}
 			use {'windwp/nvim-autopairs'}
 			use {'phaazon/hop.nvim', branch = 'v2'}
 			use {'tpope/vim-surround'}
@@ -55,14 +58,13 @@ packer.startup(
 			use {'L3MON4D3/LuaSnip'}
 			use {'saadparwaiz1/cmp_luasnip'}
 			use {'onsails/lspkind.nvim'}
+			-- Markdown
+			use({"iamcco/markdown-preview.nvim",
+					run = function() vim.fn["mkdp#util#install"]() end,
+			})
 			-- Colorscheme
 			use {'joshdick/onedark.vim'}
 			use {'cormacrelf/vim-colors-github'}
-			-- install without yarn or npm
-			use({
-					"iamcco/markdown-preview.nvim",
-					run = function() vim.fn["mkdp#util#install"]() end,
-			})
 
 			if packer_bootstrap then
 				require('packer').sync()
