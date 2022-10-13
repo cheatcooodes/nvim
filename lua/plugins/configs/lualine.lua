@@ -48,17 +48,3 @@ require('lualine').setup {
   extensions = {}
 }
 
--- Icons
---[[
-vim.cmd("hi StatuslineIcon gui=reverse")
-vim.api.nvim_create_autocmd("BufEnter", {
-    callback = function()
-        local icon, color = require("nvim-web-devicons").get_icon_color_by_filetype(vim.bo.filetype)
-        vim.cmd("hi StatuslineIcon guibg=" .. color)
-        vim.o.statusline =
-        "%<%f %#StatuslineIcon#" ..
-        icon ..
-        "%##%h%m%r%=%-14.(%l,%c%V%) %P"
-    end
-})
---]]
