@@ -41,6 +41,7 @@ packer.startup(
 			-- Utils
 			use {'windwp/nvim-autopairs'}
 			use {'phaazon/hop.nvim', branch = 'v2'}
+			-- use {'unblevable/quick-scope'}
 			use {'tpope/vim-surround'}
 			-- use {'folke/which-key.nvim'}
 			-- Lsp installer

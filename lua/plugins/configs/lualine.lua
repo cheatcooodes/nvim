@@ -49,6 +49,7 @@ require('lualine').setup {
 }
 
 -- Icons
+--[[
 vim.cmd("hi StatuslineIcon gui=reverse")
 vim.api.nvim_create_autocmd("BufEnter", {
     callback = function()
@@ -60,3 +61,4 @@ vim.api.nvim_create_autocmd("BufEnter", {
         "%##%h%m%r%=%-14.(%l,%c%V%) %P"
     end
 })
+--]]

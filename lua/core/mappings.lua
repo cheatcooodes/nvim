@@ -59,7 +59,7 @@ end
 -- [PLUGINS]
 -- hop.nvim
 if pcall(require, "hop") then
-  map('', '<leader><leader>', "<cmd>HopWord<CR>")
+  map('', 's', "<cmd>HopWord<CR>")
   -- map('','/',"<cmd>HopPattern<CR>")
 end
 
