@@ -42,7 +42,7 @@ vim.opt.undofile = true -- 无限撤消
 -- vim.cmd("set guicursor=a:blinkwait700-blinkon400-blinkoff250") -- 光标闪烁
 
 -- Clipboard in WSL
-if vim.fn.has("wsl") and (not vim.g.vscode) then
+if vim.fn.has("wsl") then
 	vim.g.clipboard = {
 		name = 'wsl-clipboard',
 		copy = {["+"] = "clip.exe", ["*"] = "clip.exe"},
