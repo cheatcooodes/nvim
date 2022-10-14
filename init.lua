@@ -30,8 +30,10 @@ local config = {
 	"plugins.configs.cmp",
 
 	-- [LSPCONFIGS]
+	-- "lsp",
 	"lsp.pyright",
 	"lsp.sumneko_lua",
+	"lsp.clangd",
 }
 
 for _,luafile in pairs(config) do

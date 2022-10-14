@@ -4,7 +4,7 @@ local utils_exist = pcall(require, "core.utils")
 
 -- [CORE]
 -- Leader key
-vim.g.mapleader = " " -- 不能用<space>
+vim.g.mapleader = " " -- <space>
 
 -- 取消高亮
 map("n", "<ESC>", ":noh<CR>")
@@ -59,7 +59,7 @@ end
 -- [PLUGINS]
 -- hop.nvim
 if pcall(require, "hop") then
-  map('', 's', "<cmd>HopWord<CR>")
+  map('', 'r', "<cmd>HopWord<CR>")
   -- map('','/',"<cmd>HopPattern<CR>")
 end
 
