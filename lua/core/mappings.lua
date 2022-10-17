@@ -7,13 +7,11 @@ local opts = { noremap=true, silent=true }
 vim.g.mapleader = " " -- <space>
 
 -- 屏幕行之间跳转
-map("n", "j", "gj")
-map("n", "k", "gk")
+map({"n","v"}, "j", "gj")
+map({"n","v"}, "k", "gk")
 -- 移动到行首/行尾 (屏幕行)
-map("n", "H", "g^")
-map("n", "L", "g$")
-map("v", "H", "g^")
-map("v", "L", "g$")
+map({"n","v"}, "H", "g^")
+map({"n","v"}, "L", "g$")
 -- Stay in indent mode
 map("v", "<", "<gv")
 map("v", ">", ">gv")
