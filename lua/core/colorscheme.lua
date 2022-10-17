@@ -1,8 +1,5 @@
-local colorscheme
-local background = vim.o.background
-
-colorscheme = "onedark"
-background = "dark"
+local colorscheme = "onedark"
+vim.o.background = "dark"
 
 local status_ok = pcall(vim.cmd, "colorscheme " .. colorscheme)
 if not status_ok then

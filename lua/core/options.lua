@@ -12,7 +12,7 @@ vim.opt.softtabstop = 2
 vim.opt.shiftround = true
 vim.opt.shiftwidth = 2
 vim.opt.autoindent = true -- 自动对齐
-vim.opt.smartindent = true
+vim.opt.smartindent = true -- 智能对齐
 vim.opt.ignorecase = true -- 搜索大小写不敏感，除非包含大写
 vim.opt.smartcase = true
 vim.opt.incsearch = true -- 边输入边搜索
@@ -36,17 +36,17 @@ vim.opt.showtabline = 2 -- 总是显示tabline
 vim.opt.showmode = false -- vim 自带的模式提示
 vim.opt.clipboard = "unnamedplus" -- 系统剪贴板
 vim.opt.undofile = true -- 持久撤消
+-- vim.opt.undodir = "" -- 保存撤销记录的目录
 vim.opt.autowriteall = true -- 自动保存修改
 vim.opt.splitbelow = true -- 水平分割的窗口总是从下面出现
 vim.opt.splitright = true -- 垂直分割的窗口总是从右边出现
+vim.opt.title = true -- Set the title of window to the value of the titlestring
 vim.opt.guicursor = {
 	"a:blinkwait700-blinkon400-blinkoff250", -- 光标闪烁
 	"n-v-c-sm:block",
 	"i-ci-ve:ver25",
 	"r-cr-o:hor20"
 }
-vim.opt.title = true -- Set the title of window to the value of the titlestring
--- vim.opt.undodir = "" -- 保存撤销记录的目录
 
 -- Clipboard in WSL
 if vim.fn.has("wsl") then

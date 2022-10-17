@@ -1,18 +1,15 @@
-local myAutoGroup = vim.api.nvim_create_augroup("myAutoGroup", {
-	clear = true,
-})
 local autocmd = vim.api.nvim_create_autocmd
+local usercmd = vim.api.nvim_create_user_command
 
--- Auto write
-autocmd({"InsertLeave", "TextChanged"}, {
-		-- group = myAutoGroup,
-		command = "silent! wall", -- write all without notify
-	})
+ --- Create Autocommands Groups ---
+vim.api.nvim_create_augroup("updateConfig", { clear = true })
+vim.api.nvim_create_augroup("terminal", { clear = true })
 
 
+ --- Auto Commands ---
 -- Update the config without restarting
 autocmd({"InsertLeave", "TextChanged"}, {
-	-- group = myAutoGroup,
+	group = "updateConfig",
 	pattern = {"*/.config/nvim/*.lua","*/.config/nvim/*.vim"},
 	callback = function()
 		local status_ok = pcall(vim.cmd,"source %")
@@ -32,13 +29,13 @@ autocmd({"InsertLeave", "TextChanged"}, {
 -- Terminal Mode
 -- Automatically switch to insert mode
 autocmd("TermOpen", {
-	-- group = myAutoGroup,
+	group = "terminal",
 	command = "startinsert",
 })
 
 -- Line number will not be displayed
 autocmd("TermOpen", {
-	-- group = myAutoGroup,
+	group = "terminal",
 	callback = function()
 		vim.wo.number = false -- "wo" means options in current window
 		vim.wo.relativenumber = false
@@ -47,7 +44,6 @@ autocmd("TermOpen", {
 
 -- Highlight when yanking
 autocmd("TextYankPost", {
-	-- group = myAutoGroup,
 	callback = function()
 		vim.highlight.on_yank({
 			higroup = 'IncSearch',
@@ -57,5 +53,32 @@ autocmd("TextYankPost", {
 })
 
 
+ --- User Defined Commands ---
 
+usercmd(
+	'Run',
+	function()
+		local supportedFileTypes = {"python","cpp","c","sh",}
+
+		local filetype = vim.opt.filetype:get()
+		-- vim.notify("filetype: " .. filetype)
+		for _,v in pairs(supportedFileTypes) do
+			if filetype == v then
+				vim.cmd("silent! w |silent! !chmod 755 %")
+				if filetype == 'python' then
+					vim.cmd("!python3 %")
+				elseif filetype == 'c' then
+					-- vim.cmd("!gcc % && ./a.out") -- Or "vim.cmd([[vsplit |terminal gcc % && ./a.out]])"
+					vim.cmd([[vsplit |terminal gcc % && ./a.out]])
+				elseif filetype == 'cpp' then
+					vim.cmd("!g++ % && ./a.out")
+				elseif filetype == 'sh' then
+					vim.cmd("!./%") end
+				return
+			end
+		end
+		vim.notify("[CodeRunner]: The file type \""..filetype.."\" isn't supported.")
+	end,
+	{bang = true}
+)
 

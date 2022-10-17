@@ -14,7 +14,6 @@
 local config = {
 	-- [CORE]
 	"core.options",
-	"core.utils",
 	"core.mappings",
 	"core.colorscheme",
 	"core.autocmds",

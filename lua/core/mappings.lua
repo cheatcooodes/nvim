@@ -1,13 +1,11 @@
 local map = vim.keymap.set
 local opts = { noremap=true, silent=true }
-local utils_exist = pcall(require, "core.utils")
 
--- [CORE]
+
+ --- CORE ---
 -- Leader key
 vim.g.mapleader = " " -- <space>
 
--- 取消高亮
-map("n", "<ESC>", ":noh<CR>")
 -- 屏幕行之间跳转
 map("n", "j", "gj")
 map("n", "k", "gk")
@@ -19,6 +17,8 @@ map("v", "L", "g$")
 -- Stay in indent mode
 map("v", "<", "<gv")
 map("v", ">", ">gv")
+-- No highlight
+map("n", "<ESC>", ":noh<CR>", { silent=true })
 -- Quit terminal mode
 map("t", "<ESC><ESC>", "<C-\\><C-n>")
 map("t", "<C-w>h", "<C-\\><C-n><C-w>h")
@@ -28,8 +28,7 @@ map("t", "<C-w>l", "<C-\\><C-n><C-w>l")
 -- Toggle relative line number
 map("", "<leader>r",
   function()
-    local status = vim.opt.relativenumber:get()
-    if status then
+    if vim.opt.relativenumber:get() then
       vim.opt.relativenumber = false
     else
       vim.opt.relativenumber = true
@@ -43,20 +42,10 @@ map("", "<Nop>",
     vim.opt.number = false
     vim.opt.relativenumber = false
   end)
+map("n","<F5>","Run",{ silent=true })
 
 
--- [UTILS]
-if utils_exist then
-
-  -- CodeRunner
-  map("n", "<F5>",
-    function()
-      code_runner()
-    end)
-
-end
-
--- [PLUGINS]
+ --- PLUGINS ---
 -- hop.nvim
 if pcall(require, "hop") then
   map('', 'r', "<cmd>HopWord<CR>")
