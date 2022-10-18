@@ -52,6 +52,10 @@ autocmd("TextYankPost", {
 	end
 })
 
+-- Allow wrapping when editting text files
+autocmd("Filetype *.md, *.tex, *.txt", {
+	command = "set wrap"
+})
 
  --- User Defined Commands ---
 

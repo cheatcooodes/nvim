@@ -1,5 +1,4 @@
 --[[
-
 ███╗   ██╗███████╗ ██████╗ ██╗   ██╗██╗███╗   ███╗
 ████╗  ██║██╔════╝██╔═══██╗██║   ██║██║████╗ ████║
 ██╔██╗ ██║█████╗  ██║   ██║██║   ██║██║██╔████╔██║
@@ -7,18 +6,19 @@
 ██║ ╚████║███████╗╚██████╔╝ ╚████╔╝ ██║██║ ╚═╝ ██║
 ╚═╝  ╚═══╝╚══════╝ ╚═════╝   ╚═══╝  ╚═╝╚═╝     ╚═╝
 
-──── cheatcooodes's Neovim config  6/Oct/2022 ────
+ cheatcooodes's Neovim config
 
+ 6/Oct/2022
 --]]
 
 local config = {
-	-- [CORE]
+	-- CORE
 	"core.options",
 	"core.mappings",
 	"core.colorscheme",
 	"core.autocmds",
 
-	-- [PLUGINS]
+	-- PLUGINS
 	"plugins",
 	"plugins.configs.lualine",
 	"plugins.configs.autopairs",
@@ -28,8 +28,7 @@ local config = {
 	"plugins.configs.lspkind",
 	"plugins.configs.cmp",
 
-	-- [LSPCONFIGS]
-	-- "lsp",
+	-- LSP
 	"lsp.pyright",
 	"lsp.sumneko_lua",
 	"lsp.clangd",
