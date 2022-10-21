@@ -38,11 +38,12 @@ packer.startup(
 			use({'kyazdani42/nvim-web-devicons'})
 			-- Status line
 			use({'nvim-lualine/lualine.nvim'})
+			-- use({'vim-airline/vim-airline'})
 			-- Utils
 			use {'windwp/nvim-autopairs'}
 			use {'phaazon/hop.nvim', branch = 'v2'}
-			-- use {'unblevable/quick-scope'}
 			use {'tpope/vim-surround'}
+			-- use {'unblevable/quick-scope'}
 			-- use {'folke/which-key.nvim'}
 			-- Lsp installer
 			use {'williamboman/mason.nvim'}
@@ -60,12 +61,19 @@ packer.startup(
 			use {'saadparwaiz1/cmp_luasnip'}
 			use {'onsails/lspkind.nvim'}
 			-- Markdown
-			use({"iamcco/markdown-preview.nvim",
-					run = function() vim.fn["mkdp#util#install"]() end,
+			use({'iamcco/markdown-preview.nvim',
+				run = function() vim.fn['mkdp#util#install']() end,
 			})
+			-- Firenvim
+			use {'glacambre/firenvim',
+				run = function() vim.fn['firenvim#install'](0) end
+			}
 			-- Colorscheme
 			use {'joshdick/onedark.vim'}
 			use {'cormacrelf/vim-colors-github'}
+			-- A set of colorschemes
+			use {'rafi/awesome-vim-colorschemes'}
+
 
 			if packer_bootstrap then
 				require('packer').sync()

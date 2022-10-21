@@ -1,12 +1,23 @@
 local autocmd = vim.api.nvim_create_autocmd
 local usercmd = vim.api.nvim_create_user_command
 
+
+
  --- Create Autocommands Groups ---
 vim.api.nvim_create_augroup("updateConfig", { clear = true })
+vim.api.nvim_create_augroup("autoWriteAll", { clear = true })
 vim.api.nvim_create_augroup("terminal", { clear = true })
 
 
+
  --- Auto Commands ---
+
+-- auto write all
+autocmd({"InsertLeave", "TextChanged"}, {
+	group = "autoWriteAll",
+	command = "silent! wall",
+})
+
 -- Update the config without restarting
 autocmd({"InsertLeave", "TextChanged"}, {
 	group = "updateConfig",
@@ -53,9 +64,12 @@ autocmd("TextYankPost", {
 })
 
 -- Allow wrapping when editting text files
-autocmd("Filetype *.md, *.tex, *.txt", {
+autocmd("BufEnter", {
+	pattern = {"*.md","*.tex","*.txt"},
 	command = "set wrap"
 })
+
+
 
  --- User Defined Commands ---
 

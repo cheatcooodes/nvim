@@ -34,6 +34,7 @@ local config = {
 	"lsp.clangd",
 }
 
+
 for _,luafile in pairs(config) do
 	local status_ok = pcall(require,luafile)
 	if not status_ok then
