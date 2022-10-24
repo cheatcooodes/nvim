@@ -51,7 +51,6 @@ if pcall(require, "hop") then
 end
 
 
-
 -- 屏蔽不常用的按键
 -- R,r,T,t
 
