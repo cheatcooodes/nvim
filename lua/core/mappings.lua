@@ -1,8 +1,8 @@
 local map = vim.keymap.set
-local opts = { noremap=true, silent=true }
+local default_opts = { noremap=true, silent=true }
 
 
- --- CORE ---
+-- === CORE ===
 -- Leader key
 vim.g.mapleader = " " -- <space>
 
@@ -40,10 +40,11 @@ map("", "<Nop>",
     vim.opt.number = false
     vim.opt.relativenumber = false
   end)
+-- Code Runner
 map("n","<F5>","Run",{ silent=true })
 
 
- --- PLUGINS ---
+-- === PLUGINS ===
 -- hop.nvim
 if pcall(require, "hop") then
   map('', 'r', "<cmd>HopWord<CR>")
@@ -51,7 +52,30 @@ if pcall(require, "hop") then
 end
 
 
--- 屏蔽不常用的按键
+-- === MARKDOWN ===
+local autocmd = vim.api.nvim_create_autocmd
+
+autocmd("BufEnter", {
+	pattern = "*.md",
+	callback = function ()
+		local opts = { buffer=0, silent=true }
+		-- vim.notify("Markdown")
+		map('v',',b',":s/\\%V.*\\%V./**&**/<CR>:noh<CR>`>2f*",opts)
+		map('v',',d',":s/\\%V.*\\%V./\\~\\~&\\~\\~/<CR>:noh<CR>`>2f~",opts)
+		map('v',',l',":s/\\%V.*\\%V./*&*/<CR>:noh<CR>`>f*",opts)
+		map('v',',m',":s/\\%V.*\\%V./$&$/<CR>:noh<CR>`>f$",opts)
+		map('',',1',"I# <ESC>g$",opts)
+		map('',',2',"I## <ESC>g$",opts)
+		map('',',3',"I### <ESC>g$",opts)
+		map('',',4',"I#### <ESC>g$",opts)
+	end
+})
+
+
+
+
+
+-- 屏蔽不常用的按$键
 -- R,r,T,t
 
 -- 切换标签

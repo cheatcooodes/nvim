@@ -87,7 +87,7 @@ usercmd(
 					vim.cmd("!python3 %")
 				elseif filetype == 'c' then
 					-- vim.cmd("!gcc % && ./a.out") -- Or "vim.cmd([[vsplit |terminal gcc % && ./a.out]])"
-					vim.cmd([[vsplit |terminal gcc % && ./a.out]])
+					vim.cmd([[vsplit |terminal gcc % -lm && ./a.out]])
 				elseif filetype == 'cpp' then
 					vim.cmd("!g++ % && ./a.out")
 				elseif filetype == 'sh' then

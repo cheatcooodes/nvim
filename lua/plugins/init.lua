@@ -64,10 +64,13 @@ packer.startup(
 			use({'iamcco/markdown-preview.nvim',
 				run = function() vim.fn['mkdp#util#install']() end,
 			})
+			use({'joker1007/vim-markdown-quote-syntax'})
 			-- Firenvim
 			use {'glacambre/firenvim',
 				run = function() vim.fn['firenvim#install'](0) end
 			}
+			-- Debugger
+			use {'mfussenegger/nvim-dap'}
 			-- Colorscheme
 			use {'joshdick/onedark.vim'}
 			use {'cormacrelf/vim-colors-github'}
