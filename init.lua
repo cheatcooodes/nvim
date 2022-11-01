@@ -9,6 +9,7 @@
  cheatcooodes's Neovim config
 
  6/Oct/2022
+
 --]]
 
 local config = {
@@ -27,6 +28,7 @@ local config = {
 	"plugins.configs.lspconfig",
 	"plugins.configs.lspkind",
 	"plugins.configs.cmp",
+	"plugins.configs.luasnip",
 
 	-- LSP
 	"lsp.pyright",

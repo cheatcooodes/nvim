@@ -59,7 +59,8 @@ packer.startup(
 			-- Snippets
 			use {'L3MON4D3/LuaSnip'}
 			use {'saadparwaiz1/cmp_luasnip'}
-			use {'onsails/lspkind.nvim'}
+			use {'onsails/lspkind.nvim'} -- vscode-like icons for nvim-cmp menu 
+			use {'rafamadriz/friendly-snippets'} -- vscode-like snippets
 			-- Markdown
 			use({'iamcco/markdown-preview.nvim',
 				run = function() vim.fn['mkdp#util#install']() end,
