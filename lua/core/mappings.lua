@@ -71,34 +71,3 @@ autocmd("BufEnter", {
 	end
 })
 
-
-
-
-
--- 屏蔽不常用的按$键
--- R,r,T,t
-
--- 切换标签
--- <C-Tab>
-
-
--- Telescope
--- <leader>F
-
--- Toggle explorer
--- <C-e>
-
--- Markdown mode
--- 只在.md文件中生效
--- <leader>m
--- <leader>mb **Bold**
--- <leader>mi *Italic*
--- <leader>md ~~delete~~
--- <leader>mm $math$
--- <leader>mp preview markdown
--- <leader>m1 # h1
--- <leader>m2 ## h2
--- <leader>m3 ### h3
--- <leader>m4 #### h4
--- <leader>m5 ##### h5
--- <leader>m6 ###### h6
