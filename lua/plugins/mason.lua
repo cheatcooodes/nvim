@@ -35,8 +35,6 @@ require("mason-lspconfig").setup({
 		 "sumneko_lua",
 		 "pyright",
 		 "clangd",
-		 "bash-language-server",
-		 "shellcheck"
 	},
 	automatic_installation = true
 })

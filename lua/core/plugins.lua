@@ -32,6 +32,9 @@ end
 packer.startup(
 	{
 		function(use)
+
+			-- === PLUGINS ===
+
 			-- Packer
 			use {'wbthomason/packer.nvim'}
 			-- Icons
@@ -41,8 +44,8 @@ packer.startup(
 			-- use({'vim-airline/vim-airline'})
 			-- Utils
 			use {'windwp/nvim-autopairs'}
-			use {'phaazon/hop.nvim', branch = 'v2'}
 			use {'tpope/vim-surround'}
+			use {'phaazon/hop.nvim', branch = 'v2'} -- an easymotion-like plugin
 			-- use {'unblevable/quick-scope'}
 			-- use {'folke/which-key.nvim'}
 			-- Lsp installer
@@ -61,28 +64,31 @@ packer.startup(
 			use {'saadparwaiz1/cmp_luasnip'}
 			use {'onsails/lspkind.nvim'} -- vscode-like icons for nvim-cmp menu 
 			use {'rafamadriz/friendly-snippets'} -- vscode-like snippets
-			-- Markdown
+			-- Markdown support
 			use({'iamcco/markdown-preview.nvim',
 				run = function() vim.fn['mkdp#util#install']() end,
 			})
-			use({'joker1007/vim-markdown-quote-syntax'})
+			use({'joker1007/vim-markdown-quote-syntax'}) -- code syntax highlighting
 			-- Firenvim
-			use {'glacambre/firenvim',
+			use {'glacambre/firenvim', -- embedded neovim in browser
 				run = function() vim.fn['firenvim#install'](0) end
 			}
 			-- Debugger
 			use {'mfussenegger/nvim-dap'}
+			-- Dashboard
+			-- use {''}
 			-- Colorscheme
 			use {'joshdick/onedark.vim'}
 			use {'cormacrelf/vim-colors-github'}
-			-- A set of colorschemes
-			use {'rafi/awesome-vim-colorschemes'}
+			use {'rafi/awesome-vim-colorschemes'} -- A set of colorschemes
 
 
 			if packer_bootstrap then
 				require('packer').sync()
 			end
 		end,
+
+		-- Packer configs
 		config = {
 			-- Maximum concurrency
 			max_jobs = 16,
@@ -99,7 +105,3 @@ packer.startup(
 		}
 	}
 )
-
-
-
-

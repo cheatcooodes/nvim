@@ -9,7 +9,6 @@
  cheatcooodes's Neovim config
 
  6/Oct/2022
-
 --]]
 
 local config = {
@@ -18,17 +17,17 @@ local config = {
 	"core.mappings",
 	"core.colorscheme",
 	"core.autocmds",
+	"core.plugins",
 
 	-- PLUGINS
-	"plugins",
-	"plugins.configs.lualine",
-	"plugins.configs.autopairs",
-	"plugins.configs.hop",
-	"plugins.configs.mason",
-	"plugins.configs.lspconfig",
-	"plugins.configs.lspkind",
-	"plugins.configs.cmp",
-	"plugins.configs.luasnip",
+	"plugins.lualine",
+	"plugins.autopairs",
+	"plugins.hop",
+	"plugins.mason",
+	"plugins.lspconfig",
+	"plugins.lspkind",
+	"plugins.cmp",
+	"plugins.luasnip",
 
 	-- LSP
 	"lsp.pyright",
@@ -46,10 +45,8 @@ end
 
 --[[
 if vim.g.vscode then
-	-- vscode-neovim stuff
 end
 
 if vim.fn.has("wsl") then 
-	-- Do nothing
 end
 --]]
