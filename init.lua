@@ -29,6 +29,7 @@ local config = {
 	"plugins.cmp",
 	"plugins.luasnip",
 	"plugins.treesitter",
+	"plugins.vim-markdown",
 
 	-- LSP
 	"lsp.pyright",

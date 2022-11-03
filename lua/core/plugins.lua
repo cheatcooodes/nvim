@@ -65,15 +65,20 @@ packer.startup(
 			use {'onsails/lspkind.nvim'} -- vscode-like icons for nvim-cmp menu 
 			use {'rafamadriz/friendly-snippets'} -- vscode-like snippets
 			-- Markdown support
+			use({'preservim/vim-markdown'})
 			use({'iamcco/markdown-preview.nvim',
 				run = function() vim.fn['mkdp#util#install']() end,
 			})
-			use({'joker1007/vim-markdown-quote-syntax'}) -- code syntax highlighting
+			-- use({'joker1007/vim-markdown-quote-syntax'}) -- code syntax highlighting
+			-- Latex support
+			use({'lervag/vimtex'})
+			--[[
 			-- Treesitter
 			use {
 				'nvim-treesitter/nvim-treesitter',
 				run = function() require('nvim-treesitter.install').update({ with_sync = true }) end,
 			}
+			--]]
 			-- Firenvim
 			use {'glacambre/firenvim', -- embedded neovim in browser
 				run = function() vim.fn['firenvim#install'](0) end
