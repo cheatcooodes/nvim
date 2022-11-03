@@ -50,12 +50,18 @@ vim.opt.guicursor = {
 
 -- Clipboard in WSL
 if vim.fn.has("wsl") then
-	vim.g.clipboard = {
-		name = 'wsl-clipboard',
-		copy = {["+"] = "clip.exe", ["*"] = "clip.exe"},
-		paste = {["+"] = "win32yank.exe -o --lf", ["*"] = "win32yank.exe -o --lf"},
-		cache_enabled = false
-	}
+	local clip = string.find(vim.fn.system("clip.exe"),".*not%sfound.*")
+	local yank = string.find(vim.fn.system("win32yank.exe"),".*not%sfound.*")
+	if clip == nil and yank == nil then
+		vim.g.clipboard = {
+			name = 'wsl-clipboard',
+			copy = {["+"] = "clip.exe", ["*"] = "clip.exe"},
+			paste = {["+"] = "win32yank.exe -o --lf", ["*"] = "win32yank.exe -o --lf"},
+			cache_enabled = false
+		}
+	else
+		vim.notify("clip.exe or win32yank.exe not found")
+	end
 end
 
 

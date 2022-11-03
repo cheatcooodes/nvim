@@ -28,13 +28,13 @@ local config = {
 	"plugins.lspkind",
 	"plugins.cmp",
 	"plugins.luasnip",
+	"plugins.treesitter",
 
 	-- LSP
 	"lsp.pyright",
 	"lsp.sumneko_lua",
 	"lsp.clangd",
 }
-
 
 for _,luafile in pairs(config) do
 	local status_ok = pcall(require,luafile)

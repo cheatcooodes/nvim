@@ -75,24 +75,36 @@ autocmd("BufEnter", {
 		local opts = { buffer=0, silent=true }
 		-- vim.notify("Markdown")
 		-- "," -> Prefix for Markdown 
-		map('v', ', b', ":s/\\%V.*\\%V./**&**/<CR>:noh<CR>`>2f*", opts)
-		map('n', ', b', "a****<ESC>1h", opts)
-		map('v', ', B', ":s/\\%V.*\\%V./***&***/<CR>:noh<CR>`>3f*", opts)
-		map('n', ', B', "a******<ESC>2h", opts)
-		map('v', ', d', ":s/\\%V.*\\%V./\\~\\~&\\~\\~/<CR>:noh<CR>`>2f~", opts)
-		map('n', ', d', "a~~~~<ESC>1h", opts)
-		map('v', ', l', ":s/\\%V.*\\%V./*&*/<CR>:noh<CR>`>f*", opts)
-		map('n', ', l', "a**<ESC>", opts)
-		map('v', ', m', ":s/\\%V.*\\%V./$&$/<CR>:noh<CR>`>f$", opts)
-		map('n', ', m', "a$$<ESC>", opts)
-		map('v', ', c', ":s/\\%V.*\\%V./`&`/<CR>:noh<CR>`>f`", opts)
-		map('n', ', c', "a``<ESC>1h", opts)
-		map('', ', 1', "mm0i# <ESC>`m2l", opts)
-		map('', ', 2', "mm0i## <ESC>`m3l", opts)
-		map('', ', 3', "mm0i### <ESC>`m4l", opts)
-		map('', ', 4', "mm0i#### <ESC>`m5l", opts)
-		map('', ', [', "mm0i- [ ] <ESC>`m6l", opts)
-		map('', ', , ', "mm0i* <ESC>`ml", opts)
+		-- **bold**
+		map('v', ',b', ":s/\\%V.*\\%V./**&**/<CR>:noh<CR>`>2f*", opts)
+		map('n', ',b', "a****<ESC>1h", opts)
+		-- *italic*
+		map('v', ',l', ":s/\\%V.*\\%V./*&*/<CR>:noh<CR>`>f*", opts)
+		map('n', ',l', "a**<ESC>", opts)
+		-- ~~delete~~
+		map('v', ',d', ":s/\\%V.*\\%V./\\~\\~&\\~\\~/<CR>:noh<CR>`>2f~", opts)
+		map('n', ',d', "a~~~~<ESC>1h", opts)
+		-- $math$
+		map('v', ',m', ":s/\\%V.*\\%V./$&$/<CR>:noh<CR>`>f$", opts)
+		map('n', ',m', "a$$<ESC>", opts)
+		-- `code`
+		map('v', ',c', ":s/\\%V.*\\%V./`&`/<CR>:noh<CR>`>f`", opts)
+		map('n', ',c', "a``<ESC>1h", opts)
+		-- ***boldItalic***
+		map('v', ',B', ":s/\\%V.*\\%V./***&***/<CR>:noh<CR>`>3f*", opts)
+		map('n', ',B', "a******<ESC>2h", opts)
+		-- # header 1 ~ 4
+		map('', ',1', "mm0i# <ESC>`m2l", opts)
+		map('', ',2', "mm0i## <ESC>`m3l", opts)
+		map('', ',3', "mm0i### <ESC>`m4l", opts)
+		map('', ',4', "mm0i#### <ESC>`m5l", opts)
+		-- - [ ] checkbox
+		map('', ',[', "mm0i- [ ] <ESC>`m6l", opts)
+		-- - unorderedList 
+		map('', ',,', "mm0i- <ESC>`m2l", opts)
+
+		-- Preview
+		map('', '\\p', "<cmd>MarkdownPreviewToggle<CR>", opts)
 	end
 })
 

@@ -69,6 +69,11 @@ packer.startup(
 				run = function() vim.fn['mkdp#util#install']() end,
 			})
 			use({'joker1007/vim-markdown-quote-syntax'}) -- code syntax highlighting
+			-- Treesitter
+			use {
+				'nvim-treesitter/nvim-treesitter',
+				run = function() require('nvim-treesitter.install').update({ with_sync = true }) end,
+			}
 			-- Firenvim
 			use {'glacambre/firenvim', -- embedded neovim in browser
 				run = function() vim.fn['firenvim#install'](0) end
