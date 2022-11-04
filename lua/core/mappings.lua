@@ -63,8 +63,8 @@ map('', 'r', "<cmd>HopWord<CR>")
 -- luasnip
 -- Jump to the next node
 map('i', '<C-j>', "<cmd> lua require('luasnip').jump(1)<CR>") -- 覆盖掉换行功能
-
-
+-- vim.cmd([[imap <silent><expr> <C-E> luasnip#choice_active() ? '<Plug>luasnip-next-choice' : '<C-E>']])
+-- vim.cmd([[smap <silent><expr> <C-E> luasnip#choice_active() ? '<Plug>luasnip-next-choice' : '<C-E>']])
 
 -- === MARKDOWN ===
 local autocmd = vim.api.nvim_create_autocmd
