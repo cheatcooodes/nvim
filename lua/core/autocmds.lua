@@ -69,6 +69,11 @@ autocmd("BufEnter", {
 	command = "set wrap"
 })
 
+-- Identify .fish as bash file
+autocmd("BufEnter", {
+	pattern = {"*.fish"},
+	command = "setfiletype bash"
+})
 
 
  --- User Defined Commands ---
@@ -82,14 +87,15 @@ usercmd(
 		-- vim.notify("filetype: " .. filetype)
 		for _,v in pairs(supportedFileTypes) do
 			if filetype == v then
-				vim.cmd("silent! w |silent! !chmod 755 %")
+				vim.cmd("silent! w")
+				-- vim.cmd("silent! !chmod 755 %")
 				if filetype == 'python' then
 					vim.cmd("!python3 %")
 				elseif filetype == 'c' then
 					-- vim.cmd("!gcc % && ./a.out") -- Or "vim.cmd([[vsplit |terminal gcc % && ./a.out]])"
-					vim.cmd([[vsplit |terminal gcc % -lm && ./a.out]])
+					vim.cmd([[vsplit |terminal gcc % -lm -o /tmp/a.out && /tmp/a.out]])
 				elseif filetype == 'cpp' then
-					vim.cmd("!g++ % && ./a.out")
+					vim.cmd("!g++ % -o /tmp/a.out && /tmp/a.out")
 				elseif filetype == 'sh' then
 					vim.cmd("!./%") end
 				return
