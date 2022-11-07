@@ -36,7 +36,7 @@ vim.opt.showtabline = 1 -- 当至少有两个tab时才显示tabline
 vim.opt.showmode = false -- vim 自带的模式提示
 vim.opt.clipboard = "unnamedplus" -- 系统剪贴板
 vim.opt.undofile = true -- 持久撤消
--- vim.opt.undodir = "" -- 保存撤销记录的目录
+vim.opt.undodir = vim.fn.expand("~/.cache/nvim/undo") -- 保存撤销记录的目录
 vim.opt.autowriteall = true -- 自动保存修改
 vim.opt.splitbelow = true -- 水平分割的窗口总是从下面出现
 vim.opt.splitright = true -- 垂直分割的窗口总是从右边出现
@@ -50,9 +50,9 @@ vim.opt.guicursor = {
 
 -- Clipboard in WSL
 if vim.fn.has("wsl") then
-	local clip = not string.find(vim.fn.system("clip.exe"),".*not%sfound.*")
-	local yank = not string.find(vim.fn.system("win32yank.exe"),".*not%sfound.*")
-	if clip and yank then
+	local exists_clip = (string.find(vim.fn.system("clip.exe"),".*not%sfound.*") == nil)
+	local exists_yank = (string.find(vim.fn.system("win32yank.exe"),".*not%sfound.*") == nil)
+	if exists_clip and exists_yank then
 		vim.g.clipboard = {
 			name = 'wsl-clipboard',
 			copy = {["+"] = "clip.exe", ["*"] = "clip.exe"},
