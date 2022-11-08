@@ -28,8 +28,6 @@ local luasnip = require 'luasnip'
 			["<Tab>"] = cmp.mapping(function(fallback)
 						if cmp.visible() then
 							cmp.select_next_item()
-						elseif luasnip.expand_or_jumpable() then
-							vim.fn.feedkeys(vim.api.nvim_replace_termcodes("<Plug>luasnip-expand-or-jump", true, true, true), "")
 						else
 							fallback()
 						end
@@ -38,18 +36,17 @@ local luasnip = require 'luasnip'
 			),
 
 			--[[
-			-- only jump to a snippet field if we are currently in a snippet
 			["<Tab>"] = cmp.mapping(function(fallback)
-				if cmp.visible() then
-					cmp.select_next_item()
-				elseif luasnip.expand_or_locally_jumpable() then
-					luasnip.expand_or_jump()
-				elseif luasnip.has_words_before() then
-					cmp.complete()
-				else
-					fallback()
-				end
-			end, { "i", "s" }),
+						if cmp.visible() then
+							cmp.select_next_item()
+						elseif luasnip.expand_or_jumpable() then
+							vim.fn.feedkeys(vim.api.nvim_replace_termcodes("<Plug>luasnip-expand-or-jump", true, true, true), "")
+						else
+							fallback()
+						end
+					end,
+					{ "i","s",}
+			),
 			--]]
 
 			["<S-Tab>"] = cmp.mapping(function(fallback)
