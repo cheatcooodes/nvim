@@ -85,6 +85,8 @@ packer.startup(
 			}
 			-- Debugger
 			use {'mfussenegger/nvim-dap'}
+			-- Visual marks
+			use {'kshenoy/vim-signature'}
 			-- Dashboard
 			-- use {''}
 			-- Colorscheme
