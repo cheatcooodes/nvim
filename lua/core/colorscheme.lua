@@ -1,4 +1,4 @@
-local colorscheme = "nord" -- "onedark"
+local colorscheme = "onedark" -- "nord"
 vim.o.background = "dark"
 
 -- vim.g.github_colors_soft = 1

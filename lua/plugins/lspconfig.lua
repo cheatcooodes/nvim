@@ -44,7 +44,7 @@ local on_attach = function(client, bufnr)
 
 	-- Selects a code action available at the current cursor position
 	map('n', '<F4>', vim.lsp.buf.code_action, bufopts)
-	map('x', '<F4>', vim.lsp.buf.range_code_action, bufopts)
+	-- map('x', '<F4>', vim.lsp.buf.range_code_action, bufopts)
 
 	-- Formatting
 	-- map('n', '==', function() vim.lsp.buf.format({ async = true }) end, bufopts)
