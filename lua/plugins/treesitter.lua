@@ -12,7 +12,8 @@ require'nvim-treesitter.configs'.setup ({
 		"javascript",
 		"typescript",
 		"c",
-		"python"
+		"python",
+		"bash"
 	},
 
   -- 启用代码高亮功能
