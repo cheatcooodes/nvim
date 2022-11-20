@@ -35,7 +35,7 @@ map("t", "<C-w>l", "<C-\\><C-n><C-w>l")
 map("x", "K", ":move '<-2<CR>gv-gv")
 map("x", "J", ":move '>+1<CR>gv-gv")
 -- Better paste in visual mode
-map("v", "p", '"_dP', opts)
+-- map("v", "p", '"_dP', opts)
 
 -- SWITCH --
 -- "\" -> Prefix for toggling some options 
@@ -59,8 +59,6 @@ map("", "\\t", function()
     vim.opt.number = false
     vim.opt.relativenumber = false
   end)
--- Code Runner
-map("n", "<F5>", "Run", { silent=true })
 
 -- MARKDOWN --
 local autocmd = vim.api.nvim_create_autocmd

@@ -26,10 +26,6 @@ autocmd({"InsertLeave", "TextChanged"}, {
 		local status_ok = pcall(vim.cmd,"source %")
 		if status_ok then
 			local current_file = vim.fn.expand("%:t")
-			if string.match(vim.fn.expand("%:p"),".*/.config/nvim/lua/plugins/.*%plua") then
-				-- I hate the pattern matching in lua
-				pcall(vim.cmd,"PackerCompile")
-			end
 			vim.notify("["..current_file.."] ".."Configuration updated.")
 		else
 			vim.notify("")
@@ -37,7 +33,6 @@ autocmd({"InsertLeave", "TextChanged"}, {
 	end
 })
 
--- Terminal Mode
 -- Automatically switch to insert mode
 autocmd("TermOpen", {
 	group = "terminal",

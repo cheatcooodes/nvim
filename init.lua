@@ -1,20 +1,19 @@
---[[
-███╗   ██╗███████╗ ██████╗ ██╗   ██╗██╗███╗   ███╗
-████╗  ██║██╔════╝██╔═══██╗██║   ██║██║████╗ ████║
-██╔██╗ ██║█████╗  ██║   ██║██║   ██║██║██╔████╔██║
-██║╚██╗██║██╔══╝  ██║   ██║╚██╗ ██╔╝██║██║╚██╔╝██║
-██║ ╚████║███████╗╚██████╔╝ ╚████╔╝ ██║██║ ╚═╝ ██║
-╚═╝  ╚═══╝╚══════╝ ╚═════╝   ╚═══╝  ╚═╝╚═╝     ╚═╝
 
- cheatcooodes's Neovim config
+-- ███╗   ██╗███████╗ ██████╗ ██╗   ██╗██╗███╗   ███╗
+-- ████╗  ██║██╔════╝██╔═══██╗██║   ██║██║████╗ ████║
+-- ██╔██╗ ██║█████╗  ██║   ██║██║   ██║██║██╔████╔██║
+-- ██║╚██╗██║██╔══╝  ██║   ██║╚██╗ ██╔╝██║██║╚██╔╝██║
+-- ██║ ╚████║███████╗╚██████╔╝ ╚████╔╝ ██║██║ ╚═╝ ██║
+-- ╚═╝  ╚═══╝╚══════╝ ╚═════╝   ╚═══╝  ╚═╝╚═╝     ╚═╝
 
- 6/Oct/2022
---]]
+-- cheatcooodes's Neovim config
 
-local config = {
+-- Oct 6th 2022
+
+local configs = {
 	-- CORE
 	"core.options",
-	"core.mappings",
+	"core.keymaps",
 	"core.colorscheme",
 	"core.autocmds",
 	"core.plugins",
@@ -30,6 +29,7 @@ local config = {
 	"plugins.luasnip",
 	"plugins.vim-markdown",
 	"plugins.treesitter",
+	"plugins.dap",
 
 	-- LSP
 	"lsp.pyright",
@@ -37,7 +37,7 @@ local config = {
 	"lsp.clangd",
 }
 
-for _,luafile in pairs(config) do
+for _,luafile in pairs(configs) do
 	local status_ok = pcall(require,luafile)
 	if not status_ok then
 		vim.notify("Failed to load "..luafile)
