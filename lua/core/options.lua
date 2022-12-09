@@ -3,7 +3,7 @@ vim.opt.fileencoding = "utf-8" -- 文件编码格式
 vim.opt.scrolloff = 8 -- 移动时保持显示光标上下8行
 vim.opt.sidescrolloff = 16 -- 移动时保持显示光标左右16行
 vim.opt.number = true -- 行号
-vim.opt.relativenumber = true -- 相对行号
+vim.opt.relativenumber = false -- 相对行号
 vim.opt.cursorline = true -- 高亮所在行
 vim.opt.signcolumn = "yes" -- 左侧图标指示列
 -- vim.opt.colorcolumn = "80" -- 换行参考线
@@ -50,8 +50,10 @@ vim.opt.guicursor = {
 
 -- Clipboard in WSL
 if vim.fn.has("wsl") then
-	local exists_clip = (string.find(vim.fn.system("clip.exe"),".*not%sfound.*") == nil)
-	local exists_yank = (string.find(vim.fn.system("win32yank.exe"),".*not%sfound.*") == nil)
+	local exists_clip = (vim.fn.system("which clip.exe") ~= "")
+	local exists_yank = (vim.fn.system("which win32yank.exe") ~= "")
+	print(exists_clip)
+	print(exists_yank)
 	if exists_clip and exists_yank then
 		vim.g.clipboard = {
 			name = 'wsl-clipboard',
