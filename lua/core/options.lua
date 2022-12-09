@@ -52,8 +52,6 @@ vim.opt.guicursor = {
 if vim.fn.has("wsl") then
 	local exists_clip = (vim.fn.system("which clip.exe") ~= "")
 	local exists_yank = (vim.fn.system("which win32yank.exe") ~= "")
-	print(exists_clip)
-	print(exists_yank)
 	if exists_clip and exists_yank then
 		vim.g.clipboard = {
 			name = 'wsl-clipboard',
