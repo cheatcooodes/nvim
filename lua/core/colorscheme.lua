@@ -1,9 +1,17 @@
-local colorscheme = "onedark" -- "nord"
-vim.o.background = "dark"
+vim.o.background = "dark" -- light | dark
+
+local colorscheme = "bluloco"
+-- onedark
+-- ayu
+-- bluloco
+-- nord
+-- etc
 
 local status_ok = pcall(vim.cmd, "colorscheme " .. colorscheme)
 if not status_ok then
-	-- vim.notify("[colorscheme.lua]: \"" .. colorscheme .. "\" 没有找到！")
+	vim.notify("[colorscheme.lua]: \"" .. colorscheme .. "\" not found!")
 	return
 end
+
+
 

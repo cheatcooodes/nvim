@@ -9,7 +9,6 @@ vim.api.nvim_create_augroup("autoWriteAll", { clear = true })
 vim.api.nvim_create_augroup("terminal", { clear = true })
 
 
-
  --- Auto Commands ---
 
 -- auto write all

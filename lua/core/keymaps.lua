@@ -22,6 +22,9 @@ map({"n","v"}, "L", "g$")
 -- Stay in indent mode
 map("v", "<", "<gv")
 map("v", ">", ">gv")
+-- quick indent
+map("n", ">", ">>")
+map("n", "<", "<<")
 -- Clear highlight
 map("n", "<ESC>", ":noh<CR>", { silent=true })
 -- Quit terminal mode

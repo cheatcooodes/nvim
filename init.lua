@@ -30,11 +30,13 @@ local configs = {
 	"plugins.vim-markdown",
 	"plugins.treesitter",
 	"plugins.dap",
+	-- "plugins.transparent",
 
 	-- LSP
 	"lsp.pyright",
 	"lsp.sumneko_lua",
 	"lsp.clangd",
+	"lsp.tsserver"
 }
 
 for _,luafile in pairs(configs) do

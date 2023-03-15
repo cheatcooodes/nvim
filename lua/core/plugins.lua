@@ -123,9 +123,13 @@ packer.startup(
 			-- Status line
 			use({'nvim-lualine/lualine.nvim'}) -- or 'vim-airline/vim-airline'
 
+			-- Transparent background
+			use({'xiyaowong/nvim-transparent'})
+
 			-- Colorscheme
 			use {'joshdick/onedark.vim'}
 			use {'cormacrelf/vim-colors-github'}
+			use { 'uloco/bluloco.nvim', requires = { 'rktjmp/lush.nvim' }}
 			use {'rafi/awesome-vim-colorschemes'} -- a bunch of colorschemes
 
 
